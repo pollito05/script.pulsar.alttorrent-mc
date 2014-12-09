@@ -3,6 +3,7 @@ import re
 import xbmcaddon
 import xbmc
 
+
 class Settings:
     def __init__(self):
         self.settings = xbmcaddon.Addon()
@@ -13,7 +14,9 @@ class Settings:
         self.language = self.settings.getSetting('language')
         self.extra = self.settings.getSetting('extra')
         self.time_noti = int(self.settings.getSetting('time_noti'))
-        self.max_magnets = int(self.settings.getSetting('max_magnets'))  # max_magnets
+        max_magnets = self.settings.getSetting('max_magnets')
+        self.max_magnets = int(max_magnets) if max_magnets is not '' else 10  # max_magnets
+
 
 class Browser:
     def __init__(self):
@@ -66,6 +69,7 @@ class Browser:
                 self.status = 'Wrong Username or Password'
                 result = False
         return result
+
 
 class Filtering:
     def __init__(self):
@@ -232,12 +236,14 @@ class Filtering:
         self.reason = self.reason.replace('by,', 'by') + '***'
         return result
 
+
 # clean_html
 def clean_html(data):
     lines = re.findall('<!--(.*?)-->',data)
     for line in lines:
         data = data.replace(line, '')
     return data
+
 
 # find the name in different language
 def translator(imdb_id, language):
