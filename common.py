@@ -1,4 +1,4 @@
-__author__ = 'Ruben'
+__author__ = 'mancuniancol'
 import re 
 import xbmcaddon
 import xbmc
