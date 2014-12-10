@@ -1,3 +1,4 @@
+# coding: utf-8
 from pulsar import provider
 import re
 import common
@@ -34,12 +35,14 @@ if browser.content != 'true' :  # login
     provider.notify(message=browser.status, header='ERROR!!', time=5000, image=settings.icon)
     provider.log.error('******** %s ********' % browser.status)
 
+
 def get_url(scd_link): # find url from adf.ly
     browser1 = common.Browser()
     url = 'http://www.bypassshorturl.com/get.php'
     values = {'url': scd_link }
     browser1.login(url,values,'true')
     return browser1.content
+
 
 def get_torrent(torrent):
     url_code = '%s/movie/%s.html' % (settings.url,torrent)
@@ -49,6 +52,7 @@ def get_torrent(torrent):
     browser.open('%s/ajax/download.html?id=%s&code=1' % (settings.url,code))
     url_adfly = browser.content
     return get_url(url_adfly)
+
 
 def extract_magnets(key):
     try:
@@ -67,6 +71,8 @@ def extract_magnets(key):
         return results
     except:
         provider.log.error('>>>>>>>ERROR parsing data<<<<<<<')
+        provider.notify(message='ERROR parsing data', header=None, time=5000, image=settings.icon)
+
 
 def  get_magnets(key):
     results= []
@@ -96,13 +102,16 @@ def  get_magnets(key):
     s.close()
     return results
 
+
 def search(query):
     return []
+
 
 def search_movie(info):
     filters.use_movie()
     if settings.time_noti > 0 : provider.notify(message='Searching: ' + info['title'].encode('utf-8').title()  + '...', header = None, time = settings.time_noti, image = settings.icon)
     return get_magnets(info['imdb_id'].encode('utf-8'))
+
 
 def search_episode(info):
     # just movies site

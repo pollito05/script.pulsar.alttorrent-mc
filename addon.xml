@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.pulsar.alttorrent-mc" name="Pulsar MC's Alt-Torrent (Español) Provider" version="2.1.6" provider-name="mancuniancol">
+<addon id="script.pulsar.alttorrent-mc" name="Pulsar MC's Alt-Torrent (Español) Provider" version="2.1.7" provider-name="mancuniancol">
 	<requires>
 		<import addon="xbmc.python" version="2.12.0"/>
         <import addon="plugin.video.pulsar" version="0.3.0"/>

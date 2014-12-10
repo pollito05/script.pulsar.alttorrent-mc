@@ -1,3 +1,4 @@
+# library to access URL, translation title and filtering
 __author__ = 'mancuniancol'
 import re 
 import xbmcaddon
