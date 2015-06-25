@@ -1,8 +1,2 @@
-Version 2.1.7
-Error message
-
-Version 2.0.1
-Fix for Kodi
-
 Version 2.0.0
-first version
+Ready for Pulsar 0.6.1
